@@ -3,6 +3,7 @@ package com.igeek.ssm.dao;
 import com.igeek.ssm.pojo.Items;
 import com.igeek.ssm.pojo.ItemsExample;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
 
@@ -34,4 +35,7 @@ public interface ItemsMapper {
     int updateByPrimaryKeyWithBLOBs(Items record);
 
     int updateByPrimaryKey(Items record);
+
+    @Select("select * from items")
+    List<Items> selectALL();
 }

@@ -11,6 +11,14 @@
   <resultMap id="ResultMapWithBLOBs" type="com.igeek.ssm.pojo.Items" extends="BaseResultMap" >
     <result column="detail" property="detail" jdbcType="LONGVARCHAR" />
   </resultMap>
+  <sql id="clearForeign">
+    set foreign_key_checks=0;
+    delete from items where id = #{id,jdbcType=INTEGER};
+    set foreign_key_checks=1;
+  </sql>
+  <sql id="resumeForeign">
+    set foreign_key_checks=1;
+  </sql>
   <sql id="Example_Where_Clause" >
     <where >
       <foreach collection="oredCriteria" item="criteria" separator="or" >
@@ -121,7 +129,7 @@
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from items
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER};
   </delete>
   <delete id="deleteByExample" parameterType="com.igeek.ssm.pojo.ItemsExample" >
     delete from items

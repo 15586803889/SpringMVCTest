@@ -12,22 +12,22 @@
 <body>
 <div class="container" style="margin-top: 100px">
 	<h2 class="form-group">修改商品</h2>
-	<form id="f" action="" method="post" enctype="multipart/form-data">
+	<form id="f" action="edit.action" method="post" enctype="multipart/form-data">
 		<div class="form-group" hidden="hidden">
 			<label for="id">商品id</label>
-			<input type="text" class="form-control" id="id" placeholder="id" name="id">
+			<input type="text" class="form-control" id="id" placeholder="id" name="id" value="<%=request.getParameter("id")%>">
 		</div>
 		<div class="form-group">
 			<label for="name">商品名称</label>
-			<input type="text" class="form-control" id="name" placeholder="name" name="name" required="required">
+			<input type="text" class="form-control" id="name" placeholder="name" name="name" required="required" value="<%=request.getParameter("name")%>">
 		</div>
 		<div class="form-group">
 			<label for="detail">商品描述</label>
-			<input type="text" class="form-control" id="detail" placeholder="desc" name="detail">
+			<input type="text" class="form-control" id="detail" placeholder="desc" name="detail" value="<%=request.getParameter("detail")%>">
 		</div>
 		<div class="form-group">
 			<label for="price">商品价格</label>
-			<input type="text" class="form-control" id="price" placeholder="price" name="price" required="required">
+			<input type="text" class="form-control" id="price" placeholder="price" name="price" required="required" value="<%=request.getParameter("price")%>">
 		</div>
 		<div class="form-group">
 			<label for="pic">商品图片</label>
@@ -36,9 +36,9 @@
 		</div>
 		<div class="form-group">
 			<label for="createtime">生产日期</label>
-			<input type="date" class="form-control" id="createtime" placeholder="createtime" name="createtime">
+			<input type="date" class="form-control" id="createtime" placeholder="createtime" name="createtime" value="<%=request.getParameter("createtime")%>">
 		</div>
-		<button type="submit" class="btn btn-success">提交</button>
+		<button type="submit" class="btn btn-success" onclick="editFuc()">提交</button>
 	</form>
 </div>
 </body>
@@ -53,6 +53,10 @@
 			}
 			fr.readAsDataURL(file);
 		}
+	}
+
+	function editFuc() {
+		alert("修改成功")
 	}
 </script>
 
